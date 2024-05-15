@@ -3,6 +3,8 @@ import { CreateEntradaUseCase } from "./CreateEntradaUseCase"
 
 export class CreateEntradaController {
     async handle(req:Request,res:Response){
+        res.header("Access-Control-Allow-Origin", "*");
+
         console.log("teste createEntradaControler")
         console.log("body", req.body)
         const {

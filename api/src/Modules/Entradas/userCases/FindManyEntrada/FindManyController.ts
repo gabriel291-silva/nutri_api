@@ -3,6 +3,8 @@ import { FindManyEntradaUseCase } from "./FindManyEntradaUseCase"
 
 export class FindManyEntradaController {
     async handle(req:Request,res:Response){
+        res.header("Access-Control-Allow-Origin", "*");
+
         console.log("teste createEntradaControler")
         console.log("body", req.body)
         const {name} = req.body
