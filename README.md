@@ -1,50 +1,52 @@
-comando para rodar o docker
+# Projeto X
+
+## Comando para Rodar o Docker
+
+```
 docker-compose up
+```
 
-documentação de utilização da api 
+## Documentação de Utilização da API
 
-requsitos 
+### Requisitos
 
-- docker 
-- node 
+- Docker
+- Node.js
 
-softwares de verificaçao de dados sugestão :
+### Softwares de Verificação de Dados (Sugestão)
 
-- insominia 
+- Insomnia
 
-raiz dos projeto / : 
+### Configuração do Ambiente
 
-rodar : docker-compose up 
+1. Na raiz do projeto, execute o seguinte comando para iniciar o Docker:
 
-para criar seu container e poder usar o banco postgres 
+```
+docker-compose up
+```
 
-banco vai rodar na porta : 5432:5432⁠
-podem vizualisar na porta : 8080:8080⁠
+Este comando cria o container e permite o uso do banco de dados PostgreSQL. O banco estará acessível na porta `5432`.
 
+Você pode visualizar a aplicação na porta `8080`.
 
-dentro da pasta api /api/ : 
+2. Dentro da pasta `api/api/`, execute os seguintes comandos:
 
-rodar : yarn install 
+```
+yarn install
+yarn migrate:dev
+yarn dev
+```
 
-para instalar todos os pacotes do projeto.
+Isso instalará todas as dependências do projeto, iniciará as tabelas do Prisma no banco de dados PostgreSQL e executará o projeto na porta `3333`.
 
-rodar : yarn migrate:dev 
+### Utilização da API
 
-para poder iniciar as tableas do prisma no banco postgres.
+- Link da API local: [localhost:333/entradas](http://localhost:333/entradas)
 
-rodar : yarn dev 
+### Função para Recuperar Todos os Dados em JavaScript
 
-para rodar o projeto na porta : 3333
-
-link da api local : localhost:333/entradas
-
-
-função para recuperar todos os dados em JavaScript : 
-
-fetch('http://localhost:3333/entradas/all', {
-  method: 'GET',
-  mode: 'no-cors' // Define o modo da solicitação como 'no-cors'
-})
+```javascript
+fetch('http://localhost:3333/entradas/all')
   .then(response => {
     if (!response.ok) {
       throw new Error('Erro ao recuperar os dados.');
@@ -52,33 +54,31 @@ fetch('http://localhost:3333/entradas/all', {
     return response.json();
   })
   .then(data => {
-    // Como o modo é 'no-cors', você só poderá acessar certas propriedades da resposta
     console.log('Resposta recebida:', data);
   })
   .catch(error => {
     console.error('Ocorreu um erro:', error);
   });
+```
 
+### Função para Criar um Item em JavaScript
 
-função para criar um item em JavaScritp : 
-
+```javascript
 const data = {
-  
-    "colesterol" : 1,
-    "description" : "teste",
-    "fibras" : 1,
-    "gorduraMonoinsaturadas" : 1,
-    "gorduraPolisaturadas" : 1,
-    "gorduraSaturada" : 1,
-    "name" : "nomemclatura",
-    "potassio" : 1,
-    "quantity" : 1,
-    "sodio" : 1,
-    "sugar" :1,
-    "carboidrato" : 1,
-    "proteina" : 1,
-    "calorias" : 1
-
+  "colesterol": 1,
+  "description": "teste",
+  "fibras": 1,
+  "gorduraMonoinsaturadas": 1,
+  "gorduraPolisaturadas": 1,
+  "gorduraSaturada": 1,
+  "name": "nomemclatura",
+  "potassio": 1,
+  "quantity": 1,
+  "sodio": 1,
+  "sugar": 1,
+  "carboidrato": 1,
+  "proteina": 1,
+  "calorias": 1
 };
 
 fetch('http://localhost:3333/entradas', {
@@ -100,9 +100,11 @@ fetch('http://localhost:3333/entradas', {
   .catch(error => {
     console.error('Ocorreu um erro:', error);
   });
+```
 
-função para recupar item pelo nome : 
+### Função para Recuperar Item pelo Nome
 
+```javascript
 fetch('http://localhost:3333/entradas/all', {
   method: 'GET',
   headers: {
@@ -122,3 +124,8 @@ fetch('http://localhost:3333/entradas/all', {
   .catch(error => {
     console.error('Ocorreu um erro:', error);
   });
+```
+
+---
+
+Com este guia, você pode configurar, executar e interagir com a API do Projeto X. Utilize as funções JavaScript fornecidas para recuperar e criar dados de forma eficiente.
