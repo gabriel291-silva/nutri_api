@@ -1,12 +1,17 @@
+import express from 'express';
+import cors from 'cors';
 import { routes } from './Routes/index';
-import expres from 'express'
 
-const app = expres()
+const app = express();
 
+// Configurar o middleware CORS
+app.use(cors());
 
-app.use(expres.json());
+// Configurar o middleware para parsear JSON
+app.use(express.json());
 
-app.use(routes)
+// Usar as rotas definidas
+app.use(routes);
 
-app.listen(3333, () => console.log("teste"))
-
+// Iniciar o servidor
+app.listen(3333, () => console.log("Servidor rodando na porta 3333"));
