@@ -10,7 +10,7 @@ app.use(cors());
 // Configurar o middleware para parsear JSON
 app.use(express.json());
 
-// Usar as rotas definidas
+// Usar as rotas definidas 
 app.use(routes);
 
 // Iniciar o servidor
